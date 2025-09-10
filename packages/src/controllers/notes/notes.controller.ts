@@ -7,7 +7,7 @@ export async function getNotes(req, res) {
   res.status(200).send(notes);
 }
 
-export async function postNotes(req, res) {
+export async function postNote(req, res) {
   const { db, body } = req;
   const newNote = await noteService.createNote(db, body);
   res.status(200).send(newNote);

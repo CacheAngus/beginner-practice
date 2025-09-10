@@ -4,13 +4,13 @@ import {
   getNote,
   getNotes,
   patchNote,
-  postNotes,
+  postNote,
   deleteNote,
 } from "../controllers/notes/notes.controller.ts";
 
 const router = express.Router();
 
-router.route("/").get(asyncHandler(getNotes)).post(asyncHandler(postNotes));
+router.route("/").get(asyncHandler(getNotes)).post(asyncHandler(postNote));
 
 router
   .route("/:noteId")

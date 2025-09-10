@@ -1,11 +1,9 @@
 import logging from "logging";
 import { type Connection, Types as MongooseTypes } from "mongoose";
-import Note from "../../schemas/note.ts";
 
 export async function getAllNotes(db: Connection) {
   try {
-    return await Note.find({});
-    // return db.models.Note.find({}).exec();
+    return await db.models.Note.find({}).exec();
   } catch (error) {}
 }
 
