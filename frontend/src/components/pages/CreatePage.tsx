@@ -3,13 +3,13 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router";
 import api from "../backend/axios.ts";
-// const navigate = useNavigate();
 
 function CreatePage() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !content.trim()) {
       toast.error("All fields are required");
@@ -19,7 +19,7 @@ function CreatePage() {
     try {
       await api.post(`/notes`, { title, content });
       toast.success("Note created successfully");
-      // navigate("/");
+      navigate("/");
     } catch (error) {
       toast.error("Problem creating note");
     } finally {
